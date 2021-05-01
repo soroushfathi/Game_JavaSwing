@@ -9,6 +9,7 @@ import java.awt.event.ActionListener;
 import java.awt.geom.Rectangle2D;
 import elements.*;
 import elements.Bead;
+import main.Globals;
 import main.Player;
 
 import static main.Config.*;
@@ -62,6 +63,7 @@ public class Board extends JFrame {
         public void actionPerformed(ActionEvent e) {
            if(e.getSource()==subBtn){
               configPanel.setSize(0,0);
+              Globals.PREPARE = false;
            }
            else if(e.getSource()==resBtn)
                configPanel.setBackground(Color.blue);
@@ -74,21 +76,6 @@ class BoardComponent extends JComponent{
     protected void paintComponent(Graphics g) {
         Rectangle2D rectangle2D;
         Graphics2D graphics2D = (Graphics2D)g;
-//        Image BackImg1 = new ImageIcon("E:\\University\\Semester 2\\Advance Programming\\Projects\\midProject_JavaSwing\\src\\elements\\assets\\download.png").getImage();
-//        Image BackImg2 = new ImageIcon("E:\\University\\Semester 2\\Advance Programming\\Projects\\midProject_JavaSwing\\src\\elements\\assets\\download1.png").getImage();
-//        for(int i=0;i<getHEIGHT();i++)
-//            for(int j = 0; j<getWIDTH();j++){
-//                rectangle2D = new Rectangle2D.Double(j*getTile_Size(),i*getTile_Size(),getTile_Size(),getTile_Size());
-//                if((i+j)%2==0)
-//                    graphics2D.setPaint(new Color(102, 255, 0, 195));
-//                else
-//                    graphics2D.setPaint(new Color(10, 0, 255, 173));
-//                graphics2D.fill(rectangle2D);
-//                graphics2D.draw(rectangle2D);
-//            }
-
-        //add(new Bead(1,3),1);
-
         Font font = new Font("B Sahar",Font.BOLD,28);
         g.drawString("Join the Game",getWIDTH()*40 + 30,20);
     }
