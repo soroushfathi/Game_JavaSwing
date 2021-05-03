@@ -19,16 +19,14 @@ public class Bead extends JComponent{
     }
 
 
-    private int id;
+    private final int id;
     private final boolean color;
     public Bead(int x, int y,int id,boolean color) {
         this.x = x;
         this.y = y;
         this.color=color;
         this.id=id;
-
         setBounds(getTile_Size()*x ,getTile_Size()*y ,getTile_Size(),getTile_Size());
-
     }
 
     public int getId() {
