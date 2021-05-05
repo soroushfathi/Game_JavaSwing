@@ -24,6 +24,7 @@ public class Board extends JFrame {
     public static Star[] stars = new Star[Config.getHEIGHT()*Config.getWIDTH()];
     public static Wall[] walls = new Wall[Config.getHEIGHT()*Config.getWIDTH()];
     public static Snail[] snails = new Snail[Config.getHEIGHT()*Config.getWIDTH()];
+
     public static ElementType[][] xyItem = new ElementType[Config.getWIDTH()][Config.getHEIGHT()];
     public static void setElement(ElementType item,int x,int y){
         xyItem[x][y] = item;
@@ -34,7 +35,9 @@ public class Board extends JFrame {
 
     public Board() throws HeadlessException {
         setLayout(null);
-        configPanel = new JPanel();//config panel
+
+        //config panel
+        configPanel = new JPanel();
         try {
             UIManager.setLookAndFeel("javax.swing.plaf.nimbus.NimbusLookAndFeel");
             SwingUtilities.updateComponentTreeUI(configPanel);
@@ -51,7 +54,7 @@ public class Board extends JFrame {
         subBtn.addActionListener(btnListener);
         resBtn.addActionListener(btnListener);
         // whole page
-        setSize(getWIDTH() * 40 + 20 + 150, getHEIGHT() * 40 + 42);
+        setSize(getWIDTH() * 40 + 20 + 150, getHEIGHT() * 40 + 40);
         setLocation(500, 100);
         setTitle("Game");
         setResizable(false);
@@ -59,7 +62,9 @@ public class Board extends JFrame {
         setIconImage(img);
         add(configPanel);
         Bead b0 = new Bead(0, 0, 0, true);
-        Bead b1 = new Bead(getWIDTH() - 1, getWIDTH() - 1, 1, false);
+        setElement(ElementType.BEAD,0,0);
+        Bead b1 = new Bead(Config.getWIDTH()-1, Config.getHEIGHT()-1, 1, false);
+        setElement(ElementType.BEAD,Config.getWIDTH()-1,Config.getHEIGHT()-1);
         players[0] = new Player(b0);
         players[1] = new Player(b1);
         add(b0); // btn >> jPanel >> Jframe
@@ -88,6 +93,7 @@ public class Board extends JFrame {
         @Override
         public void actionPerformed(ActionEvent e) {
             if (e.getSource() == subBtn) {
+                JOptionPane.showMessageDialog(null,"Game Started!");
                 configPanel.setSize(0, 0);
                 Globals.PREPARE = false;
             } else if (e.getSource() == resBtn)

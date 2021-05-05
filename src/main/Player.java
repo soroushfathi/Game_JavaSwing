@@ -23,13 +23,28 @@ public class Player {
         return bead;
     }
 
-    public Integer getLimits(int i) {
-        return limits.get(i);
+    public int getScore() {
+        return score;
     }
+    public void setScore(int score) {
+        this.score = score;
+    }
+
     public void addLimit(int limit){
         limits.add(limit);
     }
+    public Integer getLimits(int i) {
+        return limits.get(i);
+    }
     public List<Integer> getLimits() {
         return limits;
+    }
+    public int getSumLimits(){
+        int sum = 0;
+        for (Integer limit : limits) sum += limit;
+        return sum;
+    }
+    public void setLimits(List<Integer> limits) {
+        this.limits = limits;
     }
 }

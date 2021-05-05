@@ -15,7 +15,8 @@ import java.awt.event.MouseEvent;
 
 public class Tile extends JPanel {
     int x, y;
-
+    int starCounter=0;
+    int snailCounter=0;
     JPopupMenu jPopupMenu = new JPopupMenu();
     JMenuItem jStarItem = new JMenuItem("Star");
     JMenuItem jWallItem = new JMenuItem("Wall");
