@@ -16,9 +16,17 @@ public class Main {
             @Override
             public void run() {
                 String wOption = JOptionPane.showInputDialog("Enter the Width: ");
-                Config.setWIDTH(Integer.parseInt(wOption));
+                try{
+                    Config.setWIDTH(Integer.parseInt(wOption));
+                }catch (NumberFormatException | IndexOutOfBoundsException nfe){
+                    System.err.println(nfe.getMessage());
+                }
                 String hOption = JOptionPane.showInputDialog("Enter the Height : ");
-                Config.setHEIGHT(Integer.parseInt(hOption));
+                try{
+                    Config.setHEIGHT(Integer.parseInt(hOption));
+                }catch (NumberFormatException | IndexOutOfBoundsException nfe){
+                    System.err.println(nfe.getMessage());
+                }
                 Board window = new Board();
                 window.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
                 window.setVisible(true);
