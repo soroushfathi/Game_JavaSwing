@@ -15,12 +15,13 @@ public class Main {
         EventQueue.invokeLater(new Runnable() {
             @Override
             public void run() {
+                String wOption = JOptionPane.showInputDialog("Enter the Width: ");
+                Config.setWIDTH(Integer.parseInt(wOption));
+                String hOption = JOptionPane.showInputDialog("Enter the Height : ");
+                Config.setHEIGHT(Integer.parseInt(hOption));
                 Board window = new Board();
-//                ConfigWindow cWindow = new ConfigWindow();
                 window.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
                 window.setVisible(true);
-//                cWindow.setVisible(true);
-//                cWindow.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
                 window.toFront();
                 window.addWindowListener(new IWindowListener());
             }

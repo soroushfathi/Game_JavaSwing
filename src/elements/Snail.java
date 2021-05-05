@@ -10,7 +10,7 @@ import java.io.IOException;
 import static main.Config.getTile_Size;
 
 public class Snail extends JPanel {
-    private int limiter = 5;
+    private int limiter;
     private int x,y;
     public Snail(int x, int y) {
         this.x = x;

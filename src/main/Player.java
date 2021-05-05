@@ -9,14 +9,11 @@ public class Player {
     private final int id;
     private final Bead bead;
     private int score;
-    private final List<Integer> limits=new ArrayList();
+    private List<Integer> limits=new ArrayList<>();
 
     public Player( Bead bead) {
         this.id = bead.getId();
         this.bead = bead;
-    }
-    public void addLimit(int limit){
-        limits.add(limit);
     }
 
     public int getId() {
@@ -26,6 +23,12 @@ public class Player {
         return bead;
     }
 
+    public Integer getLimits(int i) {
+        return limits.get(i);
+    }
+    public void addLimit(int limit){
+        limits.add(limit);
+    }
     public List<Integer> getLimits() {
         return limits;
     }

@@ -3,6 +3,7 @@ package elements;
 import main.Config;
 import main.Globals;
 import main.Move;
+import main.Player;
 import pages.Board;
 
 import javax.swing.*;
@@ -36,7 +37,7 @@ public class Tile extends JPanel {
                 super.mouseReleased(e);
                 if (e.getButton() == MouseEvent.BUTTON1){
                     try{
-                        System.out.println(Board.getItem(x,y).toString());
+                        System.out.print(Board.getItem(x,y).toString() + " ");
                     } catch (NullPointerException nullPointerException){
                         System.err.println(nullPointerException.getMessage());
                     }
@@ -67,7 +68,10 @@ public class Tile extends JPanel {
                 new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
+                        String limiter =  JOptionPane.showInputDialog("please enter the limiter");
                         Board.snails[y*10+x].move(x,y);
+                        Board.snails[y*10+x].setLimiter(Integer.parseInt(limiter));
+                        System.out.println(Board.snails[y*10+x].getLimiter());
                         Board.setElement(ElementType.SNAIL,x,y);
                     }
                 }
@@ -77,10 +81,16 @@ public class Tile extends JPanel {
                     @Override
                     public void actionPerformed(ActionEvent e) {
                         switch (Board.getItem(x,y)){
-                            case STAR :
-                            case SNAIL:
-                            case WALL : {
+                            case STAR : {
                                 Board.stars[y*10+x].move(-1,-1);
+                                break;
+                            }
+                            case SNAIL: {
+                                Board.snails[y*10+x].move(-1,-1);
+                                break;
+                            }
+                            case WALL : {
+                                Board.walls[y*10+x].move(-1,-1);
                                 break;
                             }
                         }
@@ -98,10 +108,16 @@ public class Tile extends JPanel {
                     @Override
                     public void mouseReleased(MouseEvent e) {
                         super.mouseReleased(e);
-                        if(Board.getItem(x,y)==null || Board.getItem(x,y)==)
-                            jDeleteItem.setEnabled(false);
-                        else
-                            jDeleteItem.setEnabled(true);
+                        jDeleteItem.setEnabled(Board.getItem(x, y) != null);
+                        if(Board.getItem(x,y)==ElementType.BEAD || Board.getItem(x,y)==ElementType.SNAIL || Board.getItem(x,y)==ElementType.WALL || Board.getItem(x,y)==ElementType.STAR){
+                            jSnailItem.setEnabled(false);
+                            jWallItem.setEnabled(false);
+                            jStarItem.setEnabled(false);
+                        }else {
+                            jSnailItem.setEnabled(true);
+                            jWallItem.setEnabled(true);
+                            jStarItem.setEnabled(true);
+                        }
                         if (e.getButton() == MouseEvent.BUTTON3 && Globals.PREPARE)
                             jPopupMenu.show(e.getComponent(), e.getX(), e.getY());
                     }
