@@ -40,7 +40,7 @@ public class Tile extends JPanel {
                     try{
                         System.out.print(Board.getItem(x,y).toString() + " ");
                     } catch (NullPointerException nullPointerException){
-                        System.err.println(nullPointerException.getMessage());
+                        System.err.print(nullPointerException.getMessage()+ " ");
                     }
                     Move.set(x, y);
                 }
@@ -52,7 +52,7 @@ public class Tile extends JPanel {
                 new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
-                        Board.stars[y*10+x].move(x,y);
+                        Board.stars[y*Config.getHEIGHT()+x].move(x,y);
                         Board.setElement(ElementType.STAR,x,y);
                     }
                 });
@@ -61,7 +61,7 @@ public class Tile extends JPanel {
                 new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
-                        Board.walls[y*10+x].move(x,y);
+                        Board.walls[y*Config.getHEIGHT()+x].move(x,y);
                         Board.setElement(ElementType.WALL,x,y);
                     }
                 });
@@ -70,9 +70,9 @@ public class Tile extends JPanel {
                     @Override
                     public void actionPerformed(ActionEvent e) {
                         String limiter =  JOptionPane.showInputDialog("please enter the limiter");
-                        Board.snails[y*10+x].move(x,y);
-                        Board.snails[y*10+x].setLimiter(Integer.parseInt(limiter));
-                        System.out.println(Board.snails[y*10+x].getLimiter());
+                        Board.snails[y*Config.getHEIGHT()+x].move(x,y);
+                        Board.snails[y*Config.getHEIGHT()+x].setLimiter(Integer.parseInt(limiter));
+                        System.out.println(Board.snails[y*Config.getHEIGHT()+x].getLimiter());
                         Board.setElement(ElementType.SNAIL,x,y);
                     }
                 }
@@ -83,15 +83,15 @@ public class Tile extends JPanel {
                     public void actionPerformed(ActionEvent e) {
                         switch (Board.getItem(x,y)){
                             case STAR : {
-                                Board.stars[y*10+x].move(-1,-1);
+                                Board.stars[y*Config.getHEIGHT()+x].move(-1,-1);
                                 break;
                             }
                             case SNAIL: {
-                                Board.snails[y*10+x].move(-1,-1);
+                                Board.snails[y*Config.getHEIGHT()+x].move(-1,-1);
                                 break;
                             }
                             case WALL : {
-                                Board.walls[y*10+x].move(-1,-1);
+                                Board.walls[y*Config.getHEIGHT()+x].move(-1,-1);
                                 break;
                             }
                         }

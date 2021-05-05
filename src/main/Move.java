@@ -27,32 +27,32 @@ public class Move {
                       // collecting stars and adding scores
                       if(b[0].getBeadY()==y && b[0].getBeadX()!=x && x>=b[0].getBeadX()){
                           for (int i = b[0].getBeadX();i<=x;i++){
-                              Board.stars[b[0].getBeadY()*10+i].move(-1,-1);
-                              Board.setElement(null,i,y);
+                              Board.stars[b[0].getBeadY()*Config.getHEIGHT()+i].move(-1,-1);
                               if(Board.getItem(i,b[0].getBeadY())==ElementType.STAR)
-                                  players[0].setScore(scores[0]++);
+                                  scores[0]+=1;
+                              Board.setElement(null,i,y);
                           }
                       } else if (b[0].getBeadY()!=y && b[0].getBeadX()==x && y>=b[0].getBeadY()){
                           for (int j = b[0].getBeadY();j<=y;j++){
-                              Board.stars[j*10+b[0].getBeadX()].move(-1,-1);
-                              Board.setElement(null,x,j);
+                              Board.stars[j*Config.getHEIGHT()+b[0].getBeadX()].move(-1,-1);
                               if(Board.getItem(b[0].getBeadX(),j)==ElementType.STAR)
-                                  players[0].setScore(scores[0]++);
+                                  scores[0]+=1;
+                              Board.setElement(null,x,j);
                           }
                       }
                       if(b[0].getBeadY()==y && b[0].getBeadX()!=x && x<b[0].getBeadX()){
                           for(int i=x;i<=b[0].getBeadX();i++){
-                              Board.stars[b[0].getBeadY()*10+i].move(-1,-1);
-                              Board.setElement(null,i,y);
+                              Board.stars[b[0].getBeadY()*Config.getHEIGHT()+i].move(-1,-1);
                               if(Board.getItem(i,b[0].getBeadY())==ElementType.STAR)
-                                  players[0].setScore(scores[0]++);
+                                  scores[0]+=1;
+                              Board.setElement(null,i,y);
                           }
                       } else if(b[0].getBeadY()!=y && b[0].getBeadX()==x && y<b[0].getBeadY()){
                           for(int j=y;j<=b[0].getBeadY();j++){
-                              Board.stars[j*10+b[0].getBeadX()].move(-1,-1);
-                              Board.setElement(null,x,j);
+                              Board.stars[j*Config.getHEIGHT()+b[0].getBeadX()].move(-1,-1);
                               if(Board.getItem(b[0].getBeadX(),j)==ElementType.STAR)
-                                  players[0].setScore(scores[0]++);
+                                  scores[0]+=1;
+                              Board.setElement(null,x,j);
                           }
                       }
                       players[TURN++%Config.getBeadCount()].getBead().move(x,y);
