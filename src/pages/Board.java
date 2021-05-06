@@ -59,9 +59,9 @@ public class Board extends JFrame {
         setLocation(500, 100);
         setTitle("Game");
         setResizable(false);
+        add(configPanel);
         Image img = new ImageIcon("E:\\University\\Semester 2\\Advance Programming\\Projects\\midProject_JavaSwing\\src\\elements\\assets\\logo.jpg").getImage();
         setIconImage(img);
-        add(configPanel);
         Bead b0 = new Bead(0, 0, 0, true);
         setElement(ElementType.BEAD,0,0);
         Bead b1 = new Bead(Config.getWIDTH()-1, Config.getHEIGHT()-1, 1, false);
@@ -110,8 +110,7 @@ class BoardComponent extends JComponent {
         Rectangle2D rectangle2D;
         Graphics2D graphics2D = (Graphics2D) g;
         Font font = new Font("B Sahar", Font.BOLD, 28);
-        g.drawString("player 1 : ", Config.getWIDTH() * 40 + 30, 20);
-
+        g.drawString("player 1:" + Move.scores[0] + " \n player 2:" + Move.scores[1], Config.getWIDTH() * 40, 20);
     }
 
     @Override

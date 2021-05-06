@@ -15,18 +15,32 @@ public class Main {
         EventQueue.invokeLater(new Runnable() {
             @Override
             public void run() {
-                String wOption = JOptionPane.showInputDialog("Enter the Width: ");
-                try{
-                    Config.setWIDTH(Integer.parseInt(wOption));
-                }catch (NumberFormatException | IndexOutOfBoundsException nfe){
-                    System.err.println(nfe.getMessage());
-                }
-                String hOption = JOptionPane.showInputDialog("Enter the Height : ");
-                try{
-                    Config.setHEIGHT(Integer.parseInt(hOption));
-                }catch (NumberFormatException | IndexOutOfBoundsException nfe){
-                    System.err.println(nfe.getMessage());
-                }
+                boolean flagDimension = true;
+                String wOption ;
+                do{
+                    wOption = JOptionPane.showInputDialog("Enter the Width: ");
+                    try{
+                        Config.setWIDTH(Integer.parseInt(wOption));
+                        flagDimension = true;
+                    }catch (NumberFormatException | IndexOutOfBoundsException nfe){
+                        flagDimension = false;
+                        JOptionPane.showMessageDialog(null,"wrong value, try again");
+                        System.err.println(nfe.getMessage());
+                    }
+                }while(Integer.parseInt(wOption)<=0 || !flagDimension);
+                flagDimension = true;
+                String hOption;
+                do {
+                    hOption = JOptionPane.showInputDialog("Enter the Height : ");
+                    try{
+                        Config.setHEIGHT(Integer.parseInt(hOption));
+                        flagDimension = true;
+                    }catch (NumberFormatException | IndexOutOfBoundsException nfe){
+                        flagDimension = false;
+                        JOptionPane.showMessageDialog(null,"wrong value, try again");
+                        System.err.println(nfe.getMessage());
+                    }
+                }while (Integer.parseInt(hOption)<=0 || !flagDimension);
                 Board window = new Board();
                 window.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
                 window.setVisible(true);

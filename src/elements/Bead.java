@@ -3,7 +3,6 @@ package elements;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.geom.Ellipse2D;
-
 import static main.Config.*;
 
 public class Bead extends JComponent{
