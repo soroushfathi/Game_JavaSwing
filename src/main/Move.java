@@ -108,7 +108,7 @@ public class Move {
                         }
                     }
                     if (Board.getItem(i, b[0].getBeadY()) == ElementType.SNAIL){
-                        Board.snails[i * Config.getHEIGHT() + b[0].getBeadX()].move(-1, -1);
+                        Board.snails[b[0].getBeadY() * Config.getHEIGHT() + i].move(-1, -1);
                         try {
                             players[turn++%Config.getBeadCount()].addLimit(Board.snails[b[0].getBeadY()*Config.getHEIGHT()+i].getLimiter());
                             limits[turn++%Config.getBeadCount()] += Board.snails[b[0].getBeadY()*Config.getHEIGHT()+i].getLimiter();
