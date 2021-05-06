@@ -11,6 +11,7 @@ import elements.*;
 import elements.Bead;
 import main.Config;
 import main.Globals;
+import main.Move;
 import main.Player;
 import static main.Config.*;
 import static main.Globals.players;
@@ -109,7 +110,8 @@ class BoardComponent extends JComponent {
         Rectangle2D rectangle2D;
         Graphics2D graphics2D = (Graphics2D) g;
         Font font = new Font("B Sahar", Font.BOLD, 28);
-        g.drawString("Join the Game", getWIDTH() * 40 + 30, 20);
+        g.drawString("player 1 : ", Config.getWIDTH() * 40 + 30, 20);
+
     }
 
     @Override
